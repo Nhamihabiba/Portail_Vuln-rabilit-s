@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Details - {{ ip }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: bold;
+        }
+        header .icon {
+            color: #333;
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+        header p {
+            margin: 0;
+            color: #666;
+        }
+        main {
+            padding: 2rem;
+        }
+        h2 {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .insecure-port {
+            color: #d9534f;
+        }
+        a.port-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        a.port-link:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            font-family: serif;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-eye icon"></i>Details for IP: {{ ip }}</h1>
+        <p><i class="fas fa-calendar-alt icon"></i>Scan Timestamp: {{ scan_timestamp }}</p>
+    </header>
+    <main>
+        <h2>Open Ports</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Port</th>
+                    <th>Status</th>
+                    <th>Version</th>
+                    <th>Service</th> <!-- Added a column for Service -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for port in ports %}
+                <tr>
+                    <td class="{{ 'insecure-port' if port.is_insecure else '' }}">
+                        <a href="{{ url_for('port_vulnerabilities', ip=ip, port=port.port) }}" class="port-link">
+                            {{ port.port }}
+                            {% if port.is_insecure %}
+                            <i class="fas {{ port.icon }}"></i>
+                            {% endif %}
+                        </a>
+                    </td>
+                    <td>{{ port.status }}</td>
+                    <td>{{ port.version }}</td>
+                    <td>{{ port.service }}</td> <!-- Display the service name -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

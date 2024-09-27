@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Domain Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: #333;
+        }
+        main {
+            padding: 2rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            color: #007bff;
+            margin-top: 1rem;
+        }
+        .underline {
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 1rem;
+        }
+        .content {
+            margin-bottom: 1rem;
+        }
+        .ip-link {
+            color: #000; /* Couleur du texte en noir */
+            text-decoration: none; /* Pas de soulignement */
+        }
+        .ip-link:hover {
+            text-decoration: underline; /* Soulignement au survol */
+            color: #007bff; /* Couleur au survol pour garder une indication visuelle */
+        }
+        h2 {
+            font-family: serif;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Domain Details</h1>
+</header>
+<main>
+    <h2 class="section-title">{{ domain.domain }}</h2>
+    <div class="underline"></div>
+
+    <h3 class="section-title">IP Addresses</h3>
+    <div class="content">
+        <ul>
+            {% for ip in domain.ips %}
+                <li><a href="{{ url_for('ip_details', ip=ip) }}" class="ip-link">{{ ip }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h3 class="section-title">Subdomains</h3>
+    <div class="content">
+        <ul>
+            {% for subdomain in domain.subdomains %}
+                <li>{{ subdomain }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h3 class="section-title">Emails</h3>
+    <div class="content">
+        <ul>
+            {% for email in domain.emails %}
+                <li>{{ email }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h3 class="section-title">Timestamp</h3>
+    <div class="content">
+        <p>{{ domain.timestamp }}</p>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de la recherche de vulnérabilités</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        header img {
+            height: 50px;
+            margin-right: 20px;
+        }
+        h1 {
+            color: #3498db; /* Couleur du nom de domaine */
+        }
+        .highlight {
+            color: #e74c3c; /* Couleur des adresses IP et sous-domaines */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="path/to/logo.png" alt="Logo de l'entreprise">
+        <h1>Résultats de la recherche de vulnérabilités pour <span class="highlight">{{ domain }}</span></h1>
+        <!-- Ajoutez les détails du projet ici -->
+        <p>Projet : Mon Projet</p>
+        <p>Version : 1.0</p>
+        <!-- Ajoutez d'autres détails du projet ici -->
+    </header>
+    
+    <h2>Sous-domaines trouvés :</h2>
+    <ul>
+        {% for subdomain in subdomains %}
+            <li class="highlight">{{ subdomain }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Adresses IP et Ports</h2>
+    <p>Domaine saisi : <span class="highlight">{{ domain }}</span></p>
+    <p>Adresses IP :</p>
+    <ul>
+        {% for ip in ips %}
+            <li class="highlight">{{ ip }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if ports_and_versions %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Adresse IP</th>
+                    <th>Port</th>
+                    <th>Version</th>
+                    <th>Vulnérabilités</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ip, port_info in ports_and_versions.items() %}
+                    {% for port, version, vulnerabilities in port_info %}
+                        <tr>
+                            <td class="highlight">{{ ip }}</td>
+                            <td>{{ port }}</td>
+                            <td>{{ version }}</td>
+                            <td>
+                                <ul>
+                                    {% for vulnerability in vulnerabilities %}
+                                        <li>{{ vulnerability }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Aucune information sur les ports et les versions n'a été trouvée.</p>
+    {% endif %}
+</body>
+</html>

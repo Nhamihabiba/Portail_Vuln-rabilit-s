@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultats de l'Analyse Réseau</title>
+</head>
+<body>
+    <h1>Résultats de l'Analyse Réseau pour {{ domain }}</h1>
+
+    <h2>IPs trouvées :</h2>
+    <ul>
+        {% for ip in ips %}
+        <li>{{ ip }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Sous-domaines trouvés :</h2>
+    <ul>
+        {% for subdomain in subdomains %}
+        <li>{{ subdomain }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Emails trouvés :</h2>
+    <ul>
+        {% for email in emails %}
+        <li>{{ email }}</li>
+        {% endfor %}
+    </ul>
+
+    <form id="scanForm" method="post" action="{{ url_for('scan_ips') }}">
+        <input type="hidden" name="domain_name" value="{{ domain }}">
+        <textarea name="ips" rows="4" cols="50" placeholder="Entrez les adresses IP à scanner, séparées par des virgules"></textarea>
+        <button type="submit">Scanner des réseaux</button>
+    </form>
+
+    <a href="{{ url_for('acceil') }}">Retour à l'Accueil</a>
+
+    <script>
+        document.getElementById("scanForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Empêche le formulaire de se soumettre normalement
+            var ipsInput = document.querySelector("textarea[name='ips']");
+            var ips = ipsInput.value.trim(); // Obtient les adresses IP saisies
+            if (ips !== '') {
+                document.getElementById("scanForm").submit(); // Soumettre le formulaire avec les adresses IP saisies
+            } else {
+                alert("Veuillez entrer au moins une adresse IP à scanner.");
+            }
+        });
+    </script>
+</body>
+</html>

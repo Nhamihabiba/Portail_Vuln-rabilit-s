@@ -1,0 +1,58 @@
+{
+    "results": {
+        "109.70.148.59": "Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-08-22 07:46 EDT\nNmap scan report for 109.70.148.59\nHost is up (0.035s latency).\nNot shown: 993 filtered tcp ports (no-response)\nPORT     STATE SERVICE    VERSION\n21/tcp   open  tcpwrapped\n53/tcp   open  tcpwrapped\n80/tcp   open  tcpwrapped\n443/tcp  open  tcpwrapped\n465/tcp  open  tcpwrapped\n554/tcp  open  tcpwrapped\n1723/tcp open  tcpwrapped\n\nService detection performed. Please report any incorrect results at https://nmap.org/submit/ .\nNmap done: 1 IP address (1 host up) scanned in 74.19 seconds\n"
+    },
+    "domain_name": "emsi.ma",
+    "ips": [
+        "109.70.148.59"
+    ],
+    "open_ports": {
+        "109.70.148.59": [
+            {
+                "port": "21",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "53",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "80",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "443",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "465",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "554",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "1723",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            }
+        ]
+    },
+    "vulnerabilities": {
+        "109.70.148.59": {}
+    }
+}

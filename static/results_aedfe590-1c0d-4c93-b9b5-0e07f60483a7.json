@@ -1,0 +1,46 @@
+{
+    "results": {
+        "63.147.248.192": "Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-08-22 10:10 EDT\nNmap scan report for 63-147-248-192.dia.static.qwest.net (63.147.248.192)\nHost is up (0.014s latency).\nNot shown: 995 filtered tcp ports (no-response)\nPORT     STATE SERVICE VERSION\n21/tcp   open  ftp?\n80/tcp   open  http?\n443/tcp  open  https?\n554/tcp  open  rtsp?\n1723/tcp open  pptp?\n\nService detection performed. Please report any incorrect results at https://nmap.org/submit/ .\nNmap done: 1 IP address (1 host up) scanned in 214.62 seconds\n"
+    },
+    "domain_name": "COCA-COLA.FR",
+    "ips": [
+        "63.147.248.192"
+    ],
+    "open_ports": {
+        "63.147.248.192": [
+            {
+                "port": "21",
+                "version": "ftp?",
+                "status": "open",
+                "service": "ftp?"
+            },
+            {
+                "port": "80",
+                "version": "http?",
+                "status": "open",
+                "service": "http?"
+            },
+            {
+                "port": "443",
+                "version": "https?",
+                "status": "open",
+                "service": "https?"
+            },
+            {
+                "port": "554",
+                "version": "rtsp?",
+                "status": "open",
+                "service": "rtsp?"
+            },
+            {
+                "port": "1723",
+                "version": "pptp?",
+                "status": "open",
+                "service": "pptp?"
+            }
+        ]
+    },
+    "vulnerabilities": {
+        "63.147.248.192": {}
+    }
+}

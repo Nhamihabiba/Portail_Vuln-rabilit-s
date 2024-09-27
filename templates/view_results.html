@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stored Results</title>
+</head>
+<body>
+    <h1>Stored Results</h1>
+    <table border="1">
+        <tr>
+            <th>IP Address</th>
+            <th>Scan Result</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.ip }}</td>
+            <td><pre>{{ result.result }}</pre></td>
+            <td>{{ result.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

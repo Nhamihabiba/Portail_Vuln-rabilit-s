@@ -1,0 +1,179 @@
+{
+    "results": {
+        "94.23.79.2": "Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-08-22 08:06 EDT\nNmap scan report for cluster002.ovh.net (94.23.79.2)\nHost is up (0.020s latency).\nNot shown: 987 filtered tcp ports (no-response)\nPORT     STATE SERVICE    VERSION\n21/tcp   open  ftp?\n80/tcp   open  http       nginx\n| fingerprint-strings: \n|   GetRequest: \n|     HTTP/1.1 404 Not Found\n|     server: nginx\n|     date: Thu, 22 Aug 2024 12:06:55 GMT\n|     content-type: text/html; charset=utf8\n|     x-ovh-webhosting-id: 34fcf235ecf091f85cc1a3ffebc96264\n|     pragma: no-cache\n|     cache-control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0\n|     content-length: 4959\n|     x-iplb-request-id: 5758929A:120D_5E174F02:0050_66C729D9_55EC:09CA\n|     x-iplb-instance: 51676\n|     connection: close\n|     <html xml:lang=\"en-EN\" lang=\"en-EN\">\n|     <head>\n|     <title>Site not installed - OVHcloud</title>\n|     <meta name=\"viewport\" content=\"width=device-width\">\n|     <meta http-equiv=\"refresh\" content=\"90\">\n|     <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n|     <meta http-equiv=\"Content-Language\" content=\"en-EN\">\n|     <meta name=\"robots\" content=\"noindex, nofollow\">\n|     <meta name=\"description\" qtlid=\"283606\" content=\"Site not installed\">\n|     <meta ht\n|   HTTPOptions: \n|     HTTP/1.1 404 Not Found\n|     server: nginx\n|     date: Thu, 22 Aug 2024 12:06:55 GMT\n|     content-type: text/html; charset=utf8\n|     x-ovh-webhosting-id: 978da4084b3ee46e327e432b9fa3527b\n|     pragma: no-cache\n|     cache-control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0\n|     content-length: 4959\n|     x-iplb-request-id: 5758929A:1235_5E174F02:0050_66C729DF_547FC:43D0\n|     x-iplb-instance: 51738\n|     connection: close\n|     <html xml:lang=\"en-EN\" lang=\"en-EN\">\n|     <head>\n|     <title>Site not installed - OVHcloud</title>\n|     <meta name=\"viewport\" content=\"width=device-width\">\n|     <meta http-equiv=\"refresh\" content=\"90\">\n|     <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n|     <meta http-equiv=\"Content-Language\" content=\"en-EN\">\n|     <meta name=\"robots\" content=\"noindex, nofollow\">\n|     <meta name=\"description\" qtlid=\"283606\" content=\"Site not installed\">\n|_    <meta h\n| http-server-header: \n|   Apache\n|_  nginx\n111/tcp  open  tcpwrapped\n199/tcp  open  tcpwrapped\n443/tcp  open  ssl/http   nginx\n| vulscan: VulDB - https://vuldb.com:\n| [119644] Phusion Passenger up to 5.3.1 nginx race condition\n| [99933] Phusion Passenger up to 5.0.x passenger-install-nginx-module /tmp access control\n| \n| MITRE CVE - https://cve.mitre.org:\n| [CVE-2013-2070] http/modules/ngx_http_proxy_module.c in nginx 1.1.4 through 1.2.8 and 1.3.0 through 1.4.0, when proxy_pass is used with untrusted HTTP servers, allows remote attackers to cause a denial of service (crash) and obtain sensitive information from worker process memory via a crafted proxy response, a similar vulnerability to CVE-2013-2028.\n| [CVE-2013-2028] The ngx_http_parse_chunked function in http/ngx_http_parse.c in nginx 1.3.9 through 1.4.0 allows remote attackers to cause a denial of service (crash) and execute arbitrary code via a chunked Transfer-Encoding request with a large chunk size, which triggers an integer signedness error and a stack-based buffer overflow.\n| [CVE-2012-3380] Directory traversal vulnerability in naxsi-ui/nx_extract.py in the Naxsi module before 0.46-1 for Nginx allows local users to read arbitrary files via unspecified vectors.\n| [CVE-2012-2089] Buffer overflow in ngx_http_mp4_module.c in the ngx_http_mp4_module module in nginx 1.0.7 through 1.0.14 and 1.1.3 through 1.1.18, when the mp4 directive is used, allows remote attackers to cause a denial of service (memory overwrite) or possibly execute arbitrary code via a crafted MP4 file.\n| [CVE-2012-1180] Use-after-free vulnerability in nginx before 1.0.14 and 1.1.x before 1.1.17 allows remote HTTP servers to obtain sensitive information from process memory via a crafted backend response, in conjunction with a client request.\n| [CVE-2011-4963] nginx/Windows 1.3.x before 1.3.1 and 1.2.x before 1.2.1 allows remote attackers to bypass intended access restrictions and access restricted files via (1) a trailing . (dot) or (2) certain \"$index_allocation\" sequences in a request.\n| [CVE-2011-4315] Heap-based buffer overflow in compression-pointer processing in core/ngx_resolver.c in nginx before 1.0.10 allows remote resolvers to cause a denial of service (daemon crash) or possibly have unspecified other impact via a long response.\n| [CVE-2010-2266] nginx 0.8.36 allows remote attackers to cause a denial of service (crash) via certain encoded directory traversal sequences that trigger memory corruption, as demonstrated using the \"%c0.%c0.\" sequence.\n| [CVE-2010-2263] nginx 0.8 before 0.8.40 and 0.7 before 0.7.66, when running on Windows, allows remote attackers to obtain source code or unparsed content of arbitrary files under the web document root by appending ::$DATA to the URI.\n| [CVE-2009-4487] nginx 0.7.64 writes data to a log file without sanitizing non-printable characters, which might allow remote attackers to modify a window's title, or possibly execute arbitrary commands or overwrite files, via an HTTP request containing an escape sequence for a terminal emulator.\n| [CVE-2009-3898] Directory traversal vulnerability in src/http/modules/ngx_http_dav_module.c in nginx (aka Engine X) before 0.7.63, and 0.8.x before 0.8.17, allows remote authenticated users to create or overwrite arbitrary files via a .. (dot dot) in the Destination HTTP header for the WebDAV (1) COPY or (2) MOVE method.\n| [CVE-2009-3896] src/http/ngx_http_parse.c in nginx (aka Engine X) 0.1.0 through 0.4.14, 0.5.x before 0.5.38, 0.6.x before 0.6.39, 0.7.x before 0.7.62, and 0.8.x before 0.8.14 allows remote attackers to cause a denial of service (NULL pointer dereference and worker process crash) via a long URI.\n| [CVE-2009-2629] Buffer underflow in src/http/ngx_http_parse.c in nginx 0.1.0 through 0.5.37, 0.6.x before 0.6.39, 0.7.x before 0.7.62, and 0.8.x before 0.8.15 allows remote attackers to execute arbitrary code via crafted HTTP requests.\n| \n| SecurityFocus - https://www.securityfocus.com/bid/:\n| [99534] Nginx CVE-2017-7529 Remote Integer Overflow Vulnerability\n| [93903] Nginx CVE-2016-1247 Remote Privilege Escalation Vulnerability\n| [91819] Nginx CVE-2016-1000105 Security Bypass Vulnerability\n| [90967] nginx CVE-2016-4450 Denial of Service Vulnerability\n| [82230] nginx Multiple Denial of Service Vulnerabilities\n| [78928] Nginx CVE-2010-2266 Denial-Of-Service Vulnerability\n| [70025] nginx CVE-2014-3616 SSL Session Fixation Vulnerability\n| [69111] nginx SMTP Proxy Remote Command Injection Vulnerability\n| [67507] nginx SPDY Implementation CVE-2014-0088 Arbitrary Code Execution Vulnerability\n| [66537] nginx SPDY Implementation Heap Based Buffer Overflow Vulnerability\n| [63814] nginx CVE-2013-4547 URI Processing Security Bypass Vulnerability\n| [59824] Nginx CVE-2013-2070 Remote Security Vulnerability\n| [59699] nginx 'ngx_http_parse.c' Stack Buffer Overflow Vulnerability\n| [59496] nginx 'ngx_http_close_connection()' Remote Integer Overflow Vulnerability\n| [59323] nginx NULL-Byte Arbitrary Code Execution Vulnerability\n| [58105] Nginx 'access.log' Insecure File Permissions Vulnerability\n| [57139] nginx CVE-2011-4968 Man in The Middle Vulnerability\n| [55920] nginx CVE-2011-4963 Security Bypass Vulnerability\n| [54331] Nginx Naxsi Module 'nx_extract.py' Script Remote File Disclosure Vulnerability\n| [52999] nginx 'ngx_http_mp4_module.c' Buffer Overflow Vulnerability\n| [52578] nginx 'ngx_cpystrn()' Information Disclosure Vulnerability\n| [50710] nginx DNS Resolver Remote Heap Buffer Overflow Vulnerability\n| [40760] nginx Remote Source Code Disclosure and Denial of Service Vulnerabilities\n| [40434] nginx Space String Remote Source Code Disclosure Vulnerability\n| [40420] nginx Directory Traversal Vulnerability\n| [37711] nginx Terminal Escape Sequence in Logs Command Injection Vulnerability\n| [36839] nginx 'ngx_http_process_request_headers()' Remote Buffer Overflow Vulnerability\n| [36490] nginx WebDAV Multiple Directory Traversal Vulnerabilities\n| [36438] nginx Proxy DNS Cache Domain Spoofing Vulnerability\n| [36384] nginx HTTP Request Remote Buffer Overflow Vulnerability\n| \n| IBM X-Force - https://exchange.xforce.ibmcloud.com:\n| [84623] Phusion Passenger gem for Ruby with nginx configuration insecure permissions\n| [84172] nginx denial of service\n| [84048] nginx buffer overflow\n| [83923] nginx ngx_http_close_connection() integer overflow\n| [83688] nginx null byte code execution\n| [83103] Naxsi module for Nginx naxsi_unescape_uri() function security bypass\n| [82319] nginx access.log information disclosure\n| [80952] nginx SSL spoofing\n| [77244] nginx and Microsoft Windows request security bypass\n| [76778] Naxsi module for Nginx nx_extract.py directory traversal\n| [74831] nginx ngx_http_mp4_module.c buffer overflow\n| [74191] nginx ngx_cpystrn() information disclosure\n| [74045] nginx header response information disclosure\n| [71355] nginx ngx_resolver_copy() buffer overflow\n| [59370] nginx characters denial of service\n| [59369] nginx DATA source code disclosure\n| [59047] nginx space source code disclosure\n| [58966] nginx unspecified directory traversal\n| [54025] nginx ngx_http_parse.c denial of service\n| [53431] nginx WebDAV component directory traversal\n| [53328] Nginx CRC-32 cached domain name spoofing\n| [53250] Nginx ngx_http_parse_complex_uri() function code execution\n| \n| Exploit-DB - https://www.exploit-db.com:\n| [26737] nginx 1.3.9/1.4.0 x86 Brute Force Remote Exploit\n| [25775] Nginx HTTP Server 1.3.9-1.4.0 Chuncked Encoding Stack Buffer Overflow\n| [25499] nginx 1.3.9-1.4.0 DoS PoC\n| [24967] nginx 0.6.x Arbitrary Code Execution NullByte Injection\n| [14830] nginx 0.6.38 - Heap Corruption Exploit\n| [13822] Nginx <= 0.7.65 / 0.8.39 (dev) Source Disclosure / Download Vulnerability\n| [13818] Nginx 0.8.36 Source Disclosure and DoS Vulnerabilities\n| [12804] nginx [engine x] http server <= 0.6.36 Path Draversal\n| [9901] nginx 0.7.0-0.7.61, 0.6.0-0.6.38, 0.5.0-0.5.37, 0.4.0-0.4.14 PoC\n| [9829] nginx 0.7.61 WebDAV directory traversal\n| \n| OpenVAS (Nessus) - http://www.openvas.org:\n| [864418] Fedora Update for nginx FEDORA-2012-3846\n| [864310] Fedora Update for nginx FEDORA-2012-6238\n| [864209] Fedora Update for nginx FEDORA-2012-6411\n| [864204] Fedora Update for nginx FEDORA-2012-6371\n| [864121] Fedora Update for nginx FEDORA-2012-4006\n| [864115] Fedora Update for nginx FEDORA-2012-3991\n| [864065] Fedora Update for nginx FEDORA-2011-16075\n| [863654] Fedora Update for nginx FEDORA-2011-16110\n| [861232] Fedora Update for nginx FEDORA-2007-1158\n| [850180] SuSE Update for nginx openSUSE-SU-2012:0237-1 (nginx)\n| [831680] Mandriva Update for nginx MDVSA-2012:043 (nginx)\n| [802045] 64-bit Debian Linux Rootkit with nginx Doing iFrame Injection\n| [801636] nginx HTTP Request Remote Buffer Overflow Vulnerability\n| [103470] nginx 'ngx_http_mp4_module.c' Buffer Overflow Vulnerability\n| [103469] nginx 'ngx_cpystrn()' Information Disclosure Vulnerability\n| [103344] nginx DNS Resolver Remote Heap Buffer Overflow Vulnerability\n| [100676] nginx Remote Source Code Disclosure and Denial of Service Vulnerabilities\n| [100659] nginx Directory Traversal Vulnerability\n| [100658] nginx Space String Remote Source Code Disclosure Vulnerability\n| [100441] nginx Terminal Escape Sequence in Logs Command Injection Vulnerability\n| [100321] nginx 'ngx_http_process_request_headers()' Remote Buffer Overflow Vulnerability\n| [100277] nginx Proxy DNS Cache Domain Spoofing Vulnerability\n| [100276] nginx HTTP Request Remote Buffer Overflow Vulnerability\n| [100275] nginx WebDAV Multiple Directory Traversal Vulnerabilities\n| [71574] Gentoo Security Advisory GLSA 201206-07 (nginx)\n| [71308] Gentoo Security Advisory GLSA 201203-22 (nginx)\n| [71297] FreeBSD Ports: nginx\n| [71276] FreeBSD Ports: nginx\n| [71239] Debian Security Advisory DSA 2434-1 (nginx)\n| [66451] Fedora Core 11 FEDORA-2009-12782 (nginx)\n| [66450] Fedora Core 10 FEDORA-2009-12775 (nginx)\n| [66449] Fedora Core 12 FEDORA-2009-12750 (nginx)\n| [64924] Gentoo Security Advisory GLSA 200909-18 (nginx)\n| [64912] Fedora Core 10 FEDORA-2009-9652 (nginx)\n| [64911] Fedora Core 11 FEDORA-2009-9630 (nginx)\n| [64894] FreeBSD Ports: nginx\n| [64869] Debian Security Advisory DSA 1884-1 (nginx)\n| \n| SecurityTracker - https://www.securitytracker.com:\n| [1028544] nginx Bug Lets Remote Users Deny Service or Obtain Potentially Sensitive Information\n| [1028519] nginx Stack Overflow Lets Remote Users Execute Arbitrary Code\n| [1026924] nginx Buffer Overflow in ngx_http_mp4_module Lets Remote Users Execute Arbitrary Code\n| [1026827] nginx HTTP Response Processing Lets Remote Users Obtain Portions of Memory Contents\n| \n| OSVDB - http://www.osvdb.org:\n| [94864] cPnginx Plugin for cPanel nginx Configuration Manipulation Arbitrary File Access\n| [93282] nginx proxy_pass Crafted Upstream Proxied Server Response Handling Worker Process Memory Disclosure\n| [93037] nginx /http/ngx_http_parse.c Worker Process Crafted Request Handling Remote Overflow\n| [92796] nginx ngx_http_close_connection Function Crafted r-&gt\n| [92634] nginx ngx_http_request.h zero_in_uri URL Null Byte Handling Remote Code Execution\n| [90518] nginx Log Directory Permission Weakness Local Information Disclosure\n| [88910] nginx Proxy Functionality SSL Certificate Validation MitM Spoofing Weakness\n| [84339] nginx/Windows Multiple Request Sequence Parsing Arbitrary File Access\n| [83617] Naxsi Module for Nginx naxsi-ui/ nx_extract.py Traversal Arbitrary File Access\n| [81339] nginx ngx_http_mp4_module Module Atom MP4 File Handling Remote Overflow\n| [80124] nginx HTTP Header Response Parsing Freed Memory Information Disclosure\n| [77184] nginx ngx_resolver.c ngx_resolver_copy() Function DNS Response Parsing Remote Overflow\n| [65531] nginx on Windows URI ::$DATA Append Arbitrary File Access\n| [65530] nginx Encoded Traversal Sequence Memory Corruption Remote DoS\n| [65294] nginx on Windows Encoded Space Request Remote Source Disclosure\n| [63136] nginx on Windows 8.3 Filename Alias Request Access Rules / Authentication Bypass\n| [62617] nginx Internal DNS Cache Poisoning Weakness\n| [61779] nginx HTTP Request Escape Sequence Terminal Command Injection\n| [59278] nginx src/http/ngx_http_parse.c ngx_http_process_request_headers() Function URL Handling NULL Dereference DoS\n| [58328] nginx WebDAV Multiple Method Traversal Arbitrary File Write\n| [58128] nginx ngx_http_parse_complex_uri() Function Underflow\n| [44447] nginx (engine x) msie_refresh Directive Unspecified XSS\n| [44446] nginx (engine x) ssl_verify_client Directive HTTP/0.9 Protocol Bypass\n| [44445] nginx (engine x) ngx_http_realip_module satisfy_any Directive Unspecified Access Bypass\n| [44444] nginx (engine x) X-Accel-Redirect Header Unspecified Traversal\n| [44443] nginx (engine x) rtsig Method Signal Queue Overflow\n| [44442] nginx (engine x) Worker Process Millisecond Timers Unspecified Overflow\n|_\n|_http-server-header: Apache\n445/tcp  open  tcpwrapped\n554/tcp  open  rtsp?\n995/tcp  open  tcpwrapped\n1720/tcp open  tcpwrapped\n1723/tcp open  pptp?\n3306/tcp open  tcpwrapped\n3389/tcp open  tcpwrapped\n8080/tcp open  tcpwrapped\n1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :\nSF-Port80-TCP:V=7.94SVN%I=7%D=8/22%Time=66C729E4%P=x86_64-pc-linux-gnu%r(G\nSF:etRequest,14F0,\"HTTP/1\\.1\\x20404\\x20Not\\x20Found\\r\\nserver:\\x20nginx\\r\\\nSF:ndate:\\x20Thu,\\x2022\\x20Aug\\x202024\\x2012:06:55\\x20GMT\\r\\ncontent-type:\nSF:\\x20text/html;\\x20charset=utf8\\r\\nx-ovh-webhosting-id:\\x2034fcf235ecf09\nSF:1f85cc1a3ffebc96264\\r\\npragma:\\x20no-cache\\r\\ncache-control:\\x20no-stor\nSF:e,\\x20no-cache,\\x20must-revalidate,\\x20post-check=0,\\x20pre-check=0\\r\\n\nSF:content-length:\\x204959\\r\\nx-iplb-request-id:\\x205758929A:120D_5E174F02\nSF::0050_66C729D9_55EC:09CA\\r\\nx-iplb-instance:\\x2051676\\r\\nconnection:\\x2\nSF:0close\\r\\n\\r\\n<html\\x20xml:lang=\\\"en-EN\\\"\\x20lang=\\\"en-EN\\\">\\n\\x20\\x20\\\nSF:x20\\x20<head>\\n\\x20\\x20\\x20\\x20\\x20\\x20\\x20\\x20<title>Site\\x20not\\x20in\nSF:stalled\\x20-\\x20OVHcloud</title>\\n\\x20\\x20\\x20\\x20\\x20\\x20\\x20\\x20<meta\nSF:\\x20name=\\\"viewport\\\"\\x20content=\\\"width=device-width\\\">\\n\\x20\\x20\\x20\\\nSF:x20\\x20\\x20\\x20\\x20<meta\\x20http-equiv=\\\"refresh\\\"\\x20content=\\\"90\\\">\\n\nSF:\\x20\\x20\\x20\\x20\\x20\\x20\\x20\\x20<meta\\x20http-equiv=\\\"Content-Type\\\"\\x2\nSF:0content=\\\"text/html;\\x20charset=utf-8\\\">\\n\\x20\\x20\\x20\\x20\\x20\\x20\\x20\nSF:\\x20<meta\\x20http-equiv=\\\"Content-Language\\\"\\x20content=\\\"en-EN\\\">\\n\\x2\nSF:0\\x20\\x20\\x20\\x20\\x20\\x20\\x20<meta\\x20name=\\\"robots\\\"\\x20content=\\\"noin\nSF:dex,\\x20nofollow\\\">\\n\\x20\\x20\\x20\\x20\\x20\\x20\\x20\\x20<meta\\x20name=\\\"de\nSF:scription\\\"\\x20\\x20qtlid=\\\"283606\\\"\\x20content=\\\"Site\\x20not\\x20install\nSF:ed\\\">\\n\\x20\\x20\\x20\\x20\\x20\\x20\\x20\\x20<meta\\x20ht\")%r(HTTPOptions,14F1\nSF:,\"HTTP/1\\.1\\x20404\\x20Not\\x20Found\\r\\nserver:\\x20nginx\\r\\ndate:\\x20Thu,\nSF:\\x2022\\x20Aug\\x202024\\x2012:06:55\\x20GMT\\r\\ncontent-type:\\x20text/html;\nSF:\\x20charset=utf8\\r\\nx-ovh-webhosting-id:\\x20978da4084b3ee46e327e432b9fa\nSF:3527b\\r\\npragma:\\x20no-cache\\r\\ncache-control:\\x20no-store,\\x20no-cache\nSF:,\\x20must-revalidate,\\x20post-check=0,\\x20pre-check=0\\r\\ncontent-length\nSF::\\x204959\\r\\nx-iplb-request-id:\\x205758929A:1235_5E174F02:0050_66C729DF\nSF:_547FC:43D0\\r\\nx-iplb-instance:\\x2051738\\r\\nconnection:\\x20close\\r\\n\\r\\\nSF:n<html\\x20xml:lang=\\\"en-EN\\\"\\x20lang=\\\"en-EN\\\">\\n\\x20\\x20\\x20\\x20<head>\nSF:\\n\\x20\\x20\\x20\\x20\\x20\\x20\\x20\\x20<title>Site\\x20not\\x20installed\\x20-\\\nSF:x20OVHcloud</title>\\n\\x20\\x20\\x20\\x20\\x20\\x20\\x20\\x20<meta\\x20name=\\\"vi\nSF:ewport\\\"\\x20content=\\\"width=device-width\\\">\\n\\x20\\x20\\x20\\x20\\x20\\x20\\x\nSF:20\\x20<meta\\x20http-equiv=\\\"refresh\\\"\\x20content=\\\"90\\\">\\n\\x20\\x20\\x20\\\nSF:x20\\x20\\x20\\x20\\x20<meta\\x20http-equiv=\\\"Content-Type\\\"\\x20content=\\\"te\nSF:xt/html;\\x20charset=utf-8\\\">\\n\\x20\\x20\\x20\\x20\\x20\\x20\\x20\\x20<meta\\x20\nSF:http-equiv=\\\"Content-Language\\\"\\x20content=\\\"en-EN\\\">\\n\\x20\\x20\\x20\\x20\nSF:\\x20\\x20\\x20\\x20<meta\\x20name=\\\"robots\\\"\\x20content=\\\"noindex,\\x20nofol\nSF:low\\\">\\n\\x20\\x20\\x20\\x20\\x20\\x20\\x20\\x20<meta\\x20name=\\\"description\\\"\\x\nSF:20\\x20qtlid=\\\"283606\\\"\\x20content=\\\"Site\\x20not\\x20installed\\\">\\n\\x20\\x\nSF:20\\x20\\x20\\x20\\x20\\x20\\x20<meta\\x20h\");\n\nService detection performed. Please report any incorrect results at https://nmap.org/submit/ .\nNmap done: 1 IP address (1 host up) scanned in 139.92 seconds\n"
+    },
+    "domain_name": "emsi.ma",
+    "ips": [
+        "94.23.79.2"
+    ],
+    "open_ports": {
+        "94.23.79.2": [
+            {
+                "port": "21",
+                "version": "ftp?",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "80",
+                "version": "http",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "111",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "199",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "443",
+                "version": "ssl/http",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "445",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "554",
+                "version": "rtsp?",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "995",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "1720",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "1723",
+                "version": "pptp?",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "3306",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "3389",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "8080",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            }
+        ]
+    },
+    "vulnerabilities": {
+        "94.23.79.2": {
+            "CVE-2013-2070": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2013-2028": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2012-3380": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2012-2089": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2012-1180": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2011-4963": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2011-4315": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2010-2266": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2010-2263": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2009-4487": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2009-3898": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2009-3896": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2009-2629": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2017-7529": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2016-1247": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2016-1000105": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2016-4450": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2014-3616": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2014-0088": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2013-4547": {
+                "port": "N/A",
+                "details": {}
+            },
+            "CVE-2011-4968": {
+                "port": "N/A",
+                "details": {}
+            }
+        }
+    }
+}

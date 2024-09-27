@@ -1,0 +1,34 @@
+{
+    "results": {
+        "195.43.64.99": "Error: An unexpected error occurred: 'dict' object has no attribute 'insert_one'"
+    },
+    "domain_name": "snie.com",
+    "ips": [
+        "195.43.64.99"
+    ],
+    "open_ports": {
+        "195.43.64.99": [
+            {
+                "port": "21",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            },
+            {
+                "port": "80",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            },
+            {
+                "port": "443",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            }
+        ]
+    },
+    "vulnerabilities": {
+        "195.43.64.99": {}
+    }
+}

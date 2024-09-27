@@ -1,0 +1,34 @@
+{
+    "results": {
+        "94.23.79.2": "Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-08-22 07:19 EDT\nNmap scan report for cluster002.ovh.net (94.23.79.2)\nHost is up (0.0099s latency).\nNot shown: 997 filtered tcp ports (no-response)\nPORT    STATE SERVICE    VERSION\n21/tcp  open  tcpwrapped\n80/tcp  open  tcpwrapped\n443/tcp open  tcpwrapped\n\nService detection performed. Please report any incorrect results at https://nmap.org/submit/ .\nNmap done: 1 IP address (1 host up) scanned in 18.61 seconds\n"
+    },
+    "domain_name": "emsi.ma",
+    "ips": [
+        "94.23.79.2"
+    ],
+    "open_ports": {
+        "94.23.79.2": [
+            {
+                "port": "21",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "80",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            },
+            {
+                "port": "443",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            }
+        ]
+    },
+    "vulnerabilities": {
+        "94.23.79.2": {}
+    }
+}

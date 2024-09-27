@@ -1,0 +1,22 @@
+{
+    "results": {
+        "87.98.247.2": "Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-08-22 07:32 EDT\nNmap scan report for 87.98.247.2\nHost is up (0.038s latency).\nNot shown: 999 filtered tcp ports (no-response)\nPORT   STATE SERVICE    VERSION\n21/tcp open  tcpwrapped\n\nService detection performed. Please report any incorrect results at https://nmap.org/submit/ .\nNmap done: 1 IP address (1 host up) scanned in 27.26 seconds\n"
+    },
+    "domain_name": "emsi.ma",
+    "ips": [
+        "87.98.247.2"
+    ],
+    "open_ports": {
+        "87.98.247.2": [
+            {
+                "port": "21",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "unknown"
+            }
+        ]
+    },
+    "vulnerabilities": {
+        "87.98.247.2": {}
+    }
+}

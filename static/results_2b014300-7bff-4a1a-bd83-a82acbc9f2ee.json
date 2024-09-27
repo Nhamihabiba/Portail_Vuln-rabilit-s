@@ -1,0 +1,88 @@
+{
+    "results": {
+        "94.23.79.2": "Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-08-26 11:16 EDT\nNmap scan report for cluster002.ovh.net (94.23.79.2)\nHost is up (0.036s latency).\nNot shown: 988 filtered tcp ports (no-response)\nPORT     STATE SERVICE    VERSION\n21/tcp   open  tcpwrapped\n22/tcp   open  tcpwrapped\n53/tcp   open  tcpwrapped\n80/tcp   open  tcpwrapped\n113/tcp  open  tcpwrapped\n443/tcp  open  tcpwrapped\n445/tcp  open  tcpwrapped\n554/tcp  open  tcpwrapped\n587/tcp  open  tcpwrapped\n995/tcp  open  tcpwrapped\n8080/tcp open  tcpwrapped\n8888/tcp open  tcpwrapped\n\nService detection performed. Please report any incorrect results at https://nmap.org/submit/ .\nNmap done: 1 IP address (1 host up) scanned in 21.73 seconds\n"
+    },
+    "domain_name": "emsi.ma",
+    "ips": [
+        "94.23.79.2"
+    ],
+    "open_ports": {
+        "94.23.79.2": [
+            {
+                "port": "21",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            },
+            {
+                "port": "22",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            },
+            {
+                "port": "53",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            },
+            {
+                "port": "80",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            },
+            {
+                "port": "113",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            },
+            {
+                "port": "443",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            },
+            {
+                "port": "445",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            },
+            {
+                "port": "554",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            },
+            {
+                "port": "587",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            },
+            {
+                "port": "995",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            },
+            {
+                "port": "8080",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            },
+            {
+                "port": "8888",
+                "version": "tcpwrapped",
+                "status": "open",
+                "service": "tcpwrapped"
+            }
+        ]
+    },
+    "vulnerabilities": {
+        "94.23.79.2": {}
+    }
+}

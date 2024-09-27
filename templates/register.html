@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Page</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/adminlte.min.css') }}">
+  <!-- Custom CSS for alerts -->
+  <style>
+    .alert-warning {
+      color: #000; /* Darker text color for better contrast */
+      background-color: #FFC107; /* Light yellow background */
+      border-color: #FFC107; /* Slightly darker yellow border */
+      position: relative;
+      padding: .75rem 1.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid transparent;
+      border-radius: .25rem;
+    }
+    .register-box {
+      width: 360px;
+      margin: 7% auto;
+    }
+    .register-logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .register-logo img {
+      width: 80px;
+      height: 80px;
+    }
+    .register-logo h1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body class="hold-transition register-page">
+<div class="register-box">
+  <!-- Member icon and title -->
+  <div class="register-logo">
+    <img src="{{ url_for('static', filename='images/Login.png') }}" alt="Member Icon">
+    <h1>Register</h1>
+  </div>
+  <!-- /.register-logo -->
+
+  <div class="card">
+    <div class="card-body register-card-body">
+      <p class="login-box-msg">Register a new membership</p>
+
+      <!-- Affichage des erreurs -->
+      {% if errors %}
+        <div class="alert alert-warning">
+          <ul>
+            {% for error in errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% elif message %}
+        <div class="alert alert-warning">{{ message }}</div>
+      {% endif %}
+
+      <form action="{{ url_for('register') }}" method="post">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" name="name" placeholder="Full Name" value="{{ request.form.name }}" required>
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" name="email" placeholder="Email" value="{{ request.form.email }}" required>
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" name="password" placeholder="Password" required>
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <select class="form-control" name="role" required>
+            <option value="">Select Role</option>
+            <option value="user" {% if request.form.role == "user" %}selected{% endif %}>User</option>
+            <option value="admin" {% if request.form.role == "admin" %}selected{% endif %}>Admin</option>
+          </select>
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fas fa-user-shield"></i></span>
+          </div>
+        </div>
+
+        <div class="form-check mb-3">
+          <input type="checkbox" class="form-check-input" id="agreeTerms" name="terms" value="agree" {% if 'terms' in request.form %}checked{% endif %}>
+          <label class="form-check-label" for="agreeTerms">I agree to the <a href="#">terms</a></label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+
+        <div class="social-auth-links text-center mt-3">
+          <p>- OR -</p>
+          <a href="#" class="btn btn-block btn-primary">
+            <i class="fab fa-facebook-f mr-2"></i> Sign up using Facebook
+          </a>
+          <a href="#" class="btn btn-block btn-danger">
+            <i class="fab fa-google-plus mr-2"></i> Sign up using Google+
+          </a>
+        </div>
+
+        <div class="text-center mt-2">
+          <a href="{{ url_for('login') }}">I already have an account</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- jQuery -->
+<script src="{{ url_for('static', filename='plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ url_for('static', filename='plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ url_for('static', filename='js/adminlte.min.js') }}"></script>
+</body>
+</html>

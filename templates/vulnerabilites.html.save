@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats pour le domaine {{ domain }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Résultats pour le domaine {{ domain }}</h1>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Sous-domaines :</h5>
+                        <ul class="list-group list-group-flush">
+                            {% if subdomains %}
+                                {% for subdomain in subdomains %}
+                                    <li class="list-group-item">{{ subdomain }}</li>
+                                {% endfor %}
+                            {% else %}
+                                <li class="list-group-item">Aucun sous-domaine trouvé pour ce domaine.</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Adresses IP :</h5>
+                        <ul class="list-group list-group-flush">
+                            {% if ips %}
+                                {% for ip in ips %}
+                                    <li class="list-group-item">{{ ip }}</li>
+                                {% endfor %}
+                            {% else %}
+                                <li class="list-group-item">Aucune adresse IP trouvée pour ce domaine.</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form action="/run_nmap" method="POST">
+            <input type="hidden" name="domain" value="{{ domain }}">
+            <button class="btn btn-primary mt-4" type="submit">Scanner le réseau</button>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

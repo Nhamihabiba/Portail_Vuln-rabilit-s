@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stored Vulnerabilities</title>
+</head>
+<body>
+    <h1>Stored Vulnerabilities</h1>
+    <table border="1">
+        <tr>
+            <th>IP Address</th>
+            <th>Vulnerability</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for vulnerability in vulnerabilities %}
+        <tr>
+            <td>{{ vulnerability.ip }}</td>
+            <td><pre>{{ vulnerability.vulnerability }}</pre></td>
+            <td>{{ vulnerability.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

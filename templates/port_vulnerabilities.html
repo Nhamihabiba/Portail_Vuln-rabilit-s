@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Vulnerabilities for Port {{ port }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Utilisation de la version stable -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; /* White background */
+            color: #333; /* Dark text color */
+        }
+        header {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333; /* Black color for title */
+            font-weight: bold; /* Bold font */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header h1 i {
+            margin-right: 0.5rem;
+            font-size: 1.5rem; /* Larger icon size */
+            color: #333; /* Same color as the title */
+        }
+        main {
+            padding: 2rem;
+        }
+        h2 {
+            font-weight: bold;
+            color: #007bff;
+            font-family: serif;
+        }
+        .vulnerability {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa; /* Light background for vulnerabilities */
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .vulnerability strong {
+            display: inline-block;
+            width: 150px;
+            vertical-align: top;
+        }
+        .vulnerability .header {
+            border: 1px solid #dee2e6;
+            background: #e9ecef; /* Light background for headers */
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        .vulnerability .section-header {
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            background: #e9ecef; /* Light background for section headers */
+            padding: 5px 10px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #333;
+        }
+        .vulnerability .section-content {
+            margin-left: 20px;
+            padding-left: 10px;
+            border-left: 2px solid #dee2e6;
+        }
+        .vulnerability a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .vulnerability a:hover {
+            text-decoration: underline;
+        }
+        .vulnerability ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        table {
+            background-color: #e9ecef; /* Light background for table */
+            border: 1px solid #dee2e6;
+        }
+        th, td {
+            color: #333;
+        }
+        th {
+            background-color: #f1f1f1; /* Slightly darker than the table background */
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa; /* Slightly lighter than the table background for even rows */
+        }
+        tr:nth-child(odd) {
+            background-color: #e9ecef; /* Same as the table background for odd rows */
+        }
+        pre {
+            background-color: #f8f9fa; /* Light background for pre */
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-eye"></i>Vulnerabilities for Port {{ port }} on IP {{ ip }}</h1>
+    </header>
+    <main>
+        <h2>Vulnerabilities by Port</h2>
+        {% if vulnerabilities %}
+            <ul>
+                {% for vulnerability in vulnerabilities %}
+                    <li class="vulnerability">
+                        <div class="header">CVE ID: {{ vulnerability.cve_id }}</div>
+
+                        <div class="section">
+                            <div class="section-header">🔍 Vulnerability Information</div>
+                            <div class="section-content">
+                                <strong>Published:</strong> {{ vulnerability.published }}<br>
+                                <strong>Base Score:</strong> {{ vulnerability.base_score }}<br>
+                                <strong>Vector:</strong> {{ vulnerability.vector }}<br>
+                                <strong>Description:</strong> {{ vulnerability.description | nl2br }}
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="section-header">♾ Exploit Prediction Score (EPSS)</div>
+                            <div class="section-content">
+                                <strong>EPSS Score:</strong> {{ vulnerability.epss_score }}% Probability of exploitation.
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="section-header">🛡 CISA KEV Catalog</div>
+                            <div class="section-content">
+                                No data found.
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="section-header">💣 Public Exploits (Total: {{ vulnerability.reports }})</div>
+                            <div class="section-content">
+                                <ul>
+                                    {% if vulnerability.references %}
+                                        {% for ref in vulnerability.references %}
+                                            <li><a href="{{ ref }}">{{ ref }}</a></li>
+                                        {% endfor %}
+                                    {% else %}
+                                        <li>No references available.</li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="section-header">🕵 HackerOne Hacktivity</div>
+                            <div class="section-content">
+                                <strong>Rank:</strong> {{ vulnerability.epss_rank }}<br>
+                                <strong>Reports:</strong> {{ vulnerability.reports }}<br>
+                                <strong>Severity:</strong> {{ vulnerability.severity }}
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="section-header">🤖 AI-Powered Risk Assessment</div>
+                            <div class="section-content">
+                                OpenAI API key is not configured correctly.
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="section-header">⚠ Patching Priority Rating</div>
+                            <div class="section-content">
+                                <strong>Priority:</strong> {{ vulnerability.patch_priority }}
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No vulnerabilities found.</p>
+        {% endif %}
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

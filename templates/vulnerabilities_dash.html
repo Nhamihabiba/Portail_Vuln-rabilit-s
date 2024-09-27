@@ -1,0 +1,232 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Vulnerabilities</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}">Home</a></li>
+          <li class="breadcrumb-item active">Vulnerabilities</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Vulnerability List</h3>
+      </div>
+      <div class="card-body">
+        <form method="get" action="{{ url_for('vulnerabilities_dash') }}">
+          <div class="filter-section">
+            <div class="input-group input-group-sm mb-3">
+              <!-- Menu déroulant pour choisir le filtre -->
+              <select class="form-control" id="filter_type" onchange="updateFilters()">
+                <option value="">Types de search filters</option>
+                <option value="domain">Domain Name</option>
+                <option value="domain_ip">Domain & IP Address</option>
+                <option value="domain_ip_port">Domain, IP Address & Port</option>
+              </select>
+
+              <!-- Champs d'entrée masqués initialement -->
+              <input class="form-control ms-2" type="text" name="filter_domain" placeholder="Filter by Domain" value="{{ request.args.get('filter_domain', '') }}" style="display: none;">
+              <input class="form-control ms-2" type="text" name="filter_ip" placeholder="Filter by IP" value="{{ request.args.get('filter_ip', '') }}" style="display: none;">
+              <input class="form-control ms-2" type="text" name="filter_port" placeholder="Filter by Port" value="{{ request.args.get('filter_port', '') }}" style="display: none;">
+            </div>
+            <button class="btn btn-primary" type="submit">Apply Filter</button>
+          </div>
+        </form>
+        
+        {% if message %}
+          <div class="alert alert-warning" role="alert">
+            {{ message }}
+          </div>
+        {% else %}
+          <div class="table-container mt-4">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>IP Address</th>
+                  <th>Domain Name</th>
+                  <th>CVE ID</th>
+                  <th>Published</th>
+                  <th>Base Score</th>
+                  <th>Vector</th>
+                  <th>Description</th>
+                  <th>EPSS Score</th>
+                  <th>EPSS Rank</th>
+                  <th>Reports</th>
+                  <th>Severity</th>
+                  <th>Patch Priority</th>
+                  <th>Port</th>
+                  <th>References</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for v in vulnerabilities %}
+                  <tr>
+                    <td>{{ v.ip }}</td>
+                    <td>{{ v.domain }}</td>
+                    <td>{{ v.cve_id }}</td>
+                    <td>{{ v.published }}</td>
+                    <td>{{ v.base_score }}</td>
+                    <td>{{ v.vector }}</td>
+                    <td>{{ v.description }}</td>
+                    <td>{{ v.epss_score }}</td>
+                    <td>{{ v.epss_rank }}</td>
+                    <td>{{ v.reports }}</td>
+                    <td>
+                      <span class="badge {{ 'badge-success' if 'Low' in v.severity else 'badge-warning' }}">{{ v.severity }}</span>
+                    </td>
+                    <td>{{ v.patch_priority }}</td>
+                    <td>{{ v.port }}</td>
+                    <td>
+                      <ul>
+                        {% for ref in v.references %}
+                          <li><a href="{{ ref }}" target="_blank">{{ ref }}</a></li>
+                        {% endfor %}
+                      </ul>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function updateFilters() {
+  const filterType = document.getElementById('filter_type').value;
+
+  const domainInput = document.querySelector('input[name="filter_domain"]');
+  const ipInput = document.querySelector('input[name="filter_ip"]');
+  const portInput = document.querySelector('input[name="filter_port"]');
+
+  // Réinitialiser la visibilité de tous les champs
+  domainInput.style.display = 'none';
+  ipInput.style.display = 'none';
+  portInput.style.display = 'none';
+
+  // Afficher les champs en fonction du type de filtre sélectionné
+  if (filterType === 'domain') {
+    domainInput.style.display = 'inline';
+  } else if (filterType === 'domain_ip') {
+    domainInput.style.display = 'inline';
+    ipInput.style.display = 'inline';
+  } else if (filterType === 'domain_ip_port') {
+    domainInput.style.display = 'inline';
+    ipInput.style.display = 'inline';
+    portInput.style.display = 'inline';
+  }
+}
+</script>
+
+<style>
+  .input-group-sm .form-control {
+    height: 45px;
+    font-size: 14px;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 12px 28px;
+    height: 30px;
+    display: flex; /* Use flexbox to center text */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+
+  .filter-section {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+  }
+
+  th {
+    background-color: white;
+    color: black;
+    font-weight: 600;
+
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #e9ecef;
+  }
+
+  .badge-success {
+    background-color: #28a745;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .badge-warning {
+    background-color: #ffc107;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .card-header {
+    background-color: #dee2e6;
+    color: black;
+  }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-family: serif;
+  }
+</style>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh; /* Ajustez la hauteur si nécessaire */
+            padding: 20px;
+        }
+        form {
+            background-color: #fff;
+            border-radius: 15px; /* Ajoute un border-radius pour les coins arrondis */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border: 2px solid #ddd; /* Ajoute une bordure autour du formulaire */
+            max-width: 600px;
+            width: 100%; /* Assure que le formulaire ne dépasse pas le conteneur */
+        }
+
+        .short-border {
+            border-bottom: 2px solid red;
+            width: 50px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        form .form-group {
+            margin-bottom: 15px; /* Ajustez la marge si nécessaire */
+        }
+        form label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        form .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        footer {
+            background-color: rgb(35, 34, 34);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        h1 {
+            font-family : serif;
+        }
+        
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <header class="py-3 text-center">
+            <h1 class="text-danger fw-bold mb-3">Contact Us</h1>
+            <div class="short-border"></div>
+            <p class="lead font-italic">Feel free to contact us for any questions or requests:</p>
+        </header>
+    </div>
+
+    <div class="form-container">
+        <form method="POST" action="/submit_contact_form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+{% endblock %}

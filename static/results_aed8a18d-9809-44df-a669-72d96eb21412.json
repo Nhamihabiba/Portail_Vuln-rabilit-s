@@ -1,0 +1,46 @@
+{
+    "results": {
+        "23.60.89.135": "Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-08-22 10:01 EDT\nNmap scan report for a23-60-89-135.deploy.static.akamaitechnologies.com (23.60.89.135)\nHost is up (0.0094s latency).\nNot shown: 995 filtered tcp ports (no-response)\nPORT     STATE SERVICE VERSION\n21/tcp   open  ftp?\n80/tcp   open  http?\n443/tcp  open  https?\n554/tcp  open  rtsp?\n1723/tcp open  pptp?\n\nService detection performed. Please report any incorrect results at https://nmap.org/submit/ .\nNmap done: 1 IP address (1 host up) scanned in 214.39 seconds\n"
+    },
+    "domain_name": "COCA-COLA.FR",
+    "ips": [
+        "23.60.89.135"
+    ],
+    "open_ports": {
+        "23.60.89.135": [
+            {
+                "port": "21",
+                "version": "ftp?",
+                "status": "open",
+                "service": "ftp?"
+            },
+            {
+                "port": "80",
+                "version": "http?",
+                "status": "open",
+                "service": "http?"
+            },
+            {
+                "port": "443",
+                "version": "https?",
+                "status": "open",
+                "service": "https?"
+            },
+            {
+                "port": "554",
+                "version": "rtsp?",
+                "status": "open",
+                "service": "rtsp?"
+            },
+            {
+                "port": "1723",
+                "version": "pptp?",
+                "status": "open",
+                "service": "pptp?"
+            }
+        ]
+    },
+    "vulnerabilities": {
+        "23.60.89.135": {}
+    }
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats du Scan</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f7f7f7;
+        }
+        h1 {
+            color: #000000;
+            font-size: 2.8rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            color: #007bff;
+            font-size: 1.8rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: serif;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #007bff;
+        }
+        h3 {
+            color: #333;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+        .status-open {
+            color: #28a745;
+        }
+        .status-closed {
+            color: #dc3545;
+        }
+        .table thead th {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+        .table tbody tr:nth-of-type(even) {
+            background-color: #f2f2f2;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        .btn-nmap {
+            background-color: #1e4e5f;
+            color: #ffffff;
+            border: none;
+        }
+        .btn-nmap:hover {
+            background-color: #163e4c;
+        }
+        .btn-nmap .fa-eye {
+            color: #ffffff;
+            margin-right: 5px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Résultats du Scan</h1>
+        
+        <h2>Informations du Domaine</h2>
+        <p><strong>Domaine:</strong> {{ domain_name }}</p>
+        <p><strong>IP(s) Scannées:</strong> {{ ips | join(', ') }}</p>
+        
+        <h2>Résultats de Nmap</h2>
+        {% for ip, result in nmap_results.items() %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Résultats pour IP: {{ ip }}</h3>
+                </div>
+                <div class="card-body">
+                    <pre>{{ result }}</pre>
+                </div>
+            </div>
+        {% endfor %}
+        
+        <h2>Ports Ouverts</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>IP</th>
+                    <th>Port</th>
+                    <th>Service</th>
+                    <th>Version</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ip, ports in open_ports.items() %}
+                    {% for port_info in ports %}
+                        <tr>
+                            <td>{{ ip }}</td>
+                            <td>{{ port_info.port }}</td>
+                            <td>{{ port_info.service }}</td>
+                            <td>{{ port_info.version }}</td>
+                            <td class="{{ 'status-open' if port_info.status == 'open' else 'status-closed' }}">
+                                {{ port_info.status | capitalize }}
+                            </td>
+                            <td>
+                                <form action="{{ url_for('scan_ports') }}" method="post" style="display:inline;">
+                                    <input type="hidden" name="ip" value="{{ ip }}">
+                                    <input type="hidden" name="ports" value="{{ port_info.port }}">
+                                    <input type="hidden" name="domain" value="{{ domain_name }}">
+                                    <button type="submit" class="btn btn-nmap btn-sm">
+                                        <i class="fas fa-eye"></i> Scanner Port
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

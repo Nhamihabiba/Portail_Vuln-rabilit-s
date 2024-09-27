@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails des Vulnérabilités</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Détails des Vulnérabilités</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Lien</th>
+                </tr>
+            </thead>
+            <tbody id="vulnerabilities-table-body">
+                <!-- Les lignes seront ajoutées dynamiquement ici -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Requête AJAX pour récupérer les détails des vulnérabilités
+        fetch('/check_vulnerabilities')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('vulnerabilities-table-body');
+                tableBody.innerHTML = ''; // Vider le contenu précédent
+                data.vulnerabilities.forEach(vuln => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${vuln.title}</td>
+                        <td>${vuln.description}</td>
+                        <td>${vuln.date}</td>
+                        <td><a href="${vuln.link}" target="_blank">${vuln.link}</a></td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching vulnerabilities:', error));
+    </script>
+</body>
+</html>

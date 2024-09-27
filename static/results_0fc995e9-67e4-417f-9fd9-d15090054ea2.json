@@ -1,0 +1,44 @@
+{
+    "results": {
+        "23.60.89.135": "Error: An unexpected error occurred: extract_vulnerabilities() takes 1 positional argument but 2 were given"
+    },
+    "domain_name": "COCA-COLA.FR",
+    "ips": [
+        "23.60.89.135"
+    ],
+    "open_ports": {
+        "23.60.89.135": [
+            {
+                "port": "21",
+                "version": "ftp?",
+                "status": "open",
+                "service": "ftp?"
+            },
+            {
+                "port": "80",
+                "version": "http?",
+                "status": "open",
+                "service": "http?"
+            },
+            {
+                "port": "443",
+                "version": "https?",
+                "status": "open",
+                "service": "https?"
+            },
+            {
+                "port": "554",
+                "version": "rtsp?",
+                "status": "open",
+                "service": "rtsp?"
+            },
+            {
+                "port": "1723",
+                "version": "pptp?",
+                "status": "open",
+                "service": "pptp?"
+            }
+        ]
+    },
+    "vulnerabilities": {}
+}

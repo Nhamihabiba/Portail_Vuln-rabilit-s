@@ -1,0 +1,34 @@
+version: '3'
+services:
+  flask-app:
+    build:
+      context: ./flask-app  # Assurez-vous que le Dockerfile est ici
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    volumes:
+      - ./flask-app:/app
+    links:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  node-app:
+    build:
+      context: ./node-app  # Assurez-vous que le Dockerfile est ici
+    command: npm start
+    volumes:
+      - ./node-app:/app
+    ports:
+      - "3000:3000"
+    links:
+      - flask-app
+
+volumes:
+  mongo-data:
